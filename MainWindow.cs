@@ -98,6 +98,7 @@ namespace AnagramSharp
 
 			var dt = new DataTable();
 			dt.Columns.Add("Word");
+            dt.Columns.Add("WordLength");
 			dt.Columns.Add("Freq");
 			dt.Columns.Add("S_Value");
 
@@ -105,7 +106,7 @@ namespace AnagramSharp
 			{
 				DataRow row = dt.NewRow();
 				row["Word"] = wd;
-
+			    row["WordLength"] = wd.Length;
 				int freq;
 				if (frequentWords.TryGetValue(wd.ToUpper(), out freq))
 					row["Freq"] = freq;
@@ -133,10 +134,12 @@ namespace AnagramSharp
 
 			var seven = new DataTable();
 			seven.Columns.Add("Word");
+            seven.Columns.Add("WordLength");
 			seven.Columns.Add("Freq");
 			seven.Columns.Add("S_Value");
 			DataRow row = seven.NewRow();
 			row["Word"] = challenge;
+		    row["WordLength"] = 0;
 			row["Freq"] = 0;
 			row["S_Value"] = ScrabbleValue(challenge.ToUpper());
 
@@ -144,6 +147,7 @@ namespace AnagramSharp
 
 			var master = new DataTable();
 			master.Columns.Add("Word");
+		    master.Columns.Add("WordLength");
 			master.Columns.Add("Freq");
 			master.Columns.Add("S_Value");
 
@@ -174,6 +178,7 @@ namespace AnagramSharp
 		{
 			var dt = new DataTable();
 			dt.Columns.Add("Word");
+		    dt.Columns.Add("WordLength");
 			dt.Columns.Add("Freq");
 			dt.Columns.Add("S_Value");
 
@@ -185,6 +190,7 @@ namespace AnagramSharp
 			{
 				DataRow row = dt.NewRow();
 				row["Word"] = word;
+			    row["WordLength"] = word.Length;
 
 				int freq;
 				if (frequentWords.TryGetValue(word.ToUpper(), out freq))
@@ -199,6 +205,7 @@ namespace AnagramSharp
 
 			var retDt = new DataTable();
 			retDt.Columns.Add("Word");
+            retDt.Columns.Add("WordLength");
 			retDt.Columns.Add("Freq");
 			retDt.Columns.Add("S_Value");
 
@@ -210,6 +217,7 @@ namespace AnagramSharp
 					DataRow row = retDt.NewRow();
 					var wd = dt.Rows[i]["Word"].ToString();
 					row["Word"] = wd;
+				    row["WordLength"] = wd.Length;
 					row["Freq"] = dt.Rows[i]["Freq"].ToString();
 					row["S_Value"] = ScrabbleValue(wd.ToUpper());
 					retDt.Rows.Add(row);
@@ -224,6 +232,7 @@ namespace AnagramSharp
 					DataRow row = retDt.NewRow();
 					var wd = dt.Rows[i]["Word"].ToString();
 					row["Word"] = wd;
+				    row["WordLength"] = wd.Length;
 					row["Freq"] = dt.Rows[i]["Freq"].ToString();
 					row["S_Value"] = ScrabbleValue(wd.ToUpper());
 					retDt.Rows.Add(row);
